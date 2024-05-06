@@ -5,8 +5,24 @@ class HTTP:
     def __init__(self, options: dict):
         self.options = options
 
+    async def setup(self):
+        if not self.session:
+            async with ClientSession() as session:
+                self.session = session
+
     async def fetch(self, endpoint: str, options: dict):
-        headers = {**self.options.get("headers"), **options.get("headers")}
+        await self.setup()
+
+        headers = {}
+
+        self_headers = self.options.get("headers")
+        if self_headers:
+            headers.update(self_headers)
+
+        explicit_headers = options.get("headers")
+        if explicit_headers:
+            headers.update(explicit_headers)
+
         method = options.get("method")
         body = options.get("body", None)
 
