@@ -1,5 +1,5 @@
 import time
-from typing import Optional
+from typing import Any, Optional
 from .Client import Client
 
 
@@ -8,7 +8,7 @@ class Document:
         self,
         client: Client,
         key: str,
-        data: str,
+        data: Any,
         url: Optional[str] = None,
         password: Optional[str] = None,
         lifetime: Optional[int] = None,
@@ -64,10 +64,12 @@ class Document:
 
         document = await self.client.publish(
             self.data,
-            key=self.key,
-            lifetime=lifetime,
-            password=self.password,
-            secret=self.secret,
+            options={
+                "key": self.key,
+                "lifetime": lifetime,
+                "password": self.password,
+                "secret": self.secret,
+            },
         )
 
         return self.refresh(
