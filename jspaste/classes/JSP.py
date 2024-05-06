@@ -1,6 +1,5 @@
 from typing import Any, Optional
 
-from jspaste.classes.Document import Document
 from .Client import Client
 
 # TODO: instantiate Document & ClientDocument Classes for responses
