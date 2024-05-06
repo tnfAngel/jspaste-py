@@ -5,13 +5,9 @@ class HTTP:
     def __init__(self, options: dict):
         self.options = options
 
-    async def setup(self):
-        if not self.session:
-            async with ClientSession() as session:
-                self.session = session
-
     async def fetch(self, endpoint: str, options: dict):
-        await self.setup()
+        async with ClientSession() as session:
+            self.session = session
 
         headers = {}
 
