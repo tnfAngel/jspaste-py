@@ -1,6 +1,7 @@
 from typing import Any, Optional
-from jspaste.types.Client import APIEndpointVersion
+from ..types.Client import APIEndpointVersion
 from .HTTP import HTTP
+from .. import __version__
 
 
 class Client:
@@ -10,7 +11,7 @@ class Client:
 
         return {
             "headers": {
-                "User-Agent": "JSPaste-Py/0.0.0 (https://github.com/tnfAngel/jspaste-py)"
+                "User-Agent": f"JSPaste-Py/{__version__} (https://github.com/tnfAngel/jspaste-py)"
             },
             "retries": 3,
             "timeout": 1000,

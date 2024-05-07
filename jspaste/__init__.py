@@ -1,2 +1,4 @@
-from jspaste.classes.JSP import JSP
-from jspaste.classes.Client import Client
+from .classes.JSP import JSP
+from .classes.Client import Client
+
+__version__ = "0.0.1"
