@@ -1,8 +1,9 @@
 from setuptools import setup, find_packages
+from jspaste import __version__
 
 setup(
     name="jspaste",
-    version="0.1",
+    version=__version__,
     packages=find_packages(),
     description="JSPaste Python API Wrapper. WIP.",
     long_description=open("README.md").read(),
