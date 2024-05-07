@@ -13,10 +13,17 @@ setup(
     license="EUPL",
     classifiers=[
         "License :: OSI Approved :: European Union Public Licence 1.2 (EUPL 1.2)",
+        "Intended Audience :: Developers",
+        "Natural Language :: English",
+        "Operating System :: OS Independent",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Topic :: Internet",
+        "Topic :: Software Development :: Libraries",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Topic :: Utilities",
         "Development Status :: 1 - Planning",
     ],
     install_requires=[

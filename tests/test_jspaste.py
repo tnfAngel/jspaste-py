@@ -9,6 +9,8 @@ publish_result = None
 
 @pytest.mark.asyncio
 async def test_jsp_publish():
+    """Check if the publish if working."""
+
     global publish_result
 
     data = "Hello, world!"
@@ -30,18 +32,20 @@ async def test_jsp_publish():
 
     for key, value_type in expected_result.items():
         assert key in result
-        assert isinstance(result[key], value_type), "Invalid result type"
+        assert isinstance(result[key], value_type), "Invalid result type."
 
     publish_result = result
 
-    assert publish_result is not None, "Invalid publish result"
+    assert publish_result is not None, "Invalid publish result."
 
 
 @pytest.mark.asyncio
 async def test_jsp_access():
+    """Check if the access if working."""
+
     global publish_result
 
-    assert publish_result is not None, "Publish Test failed"
+    assert publish_result is not None, "Publish Test failed."
 
     print(f"Getting key {publish_result['key']}")
 
@@ -55,7 +59,7 @@ async def test_jsp_access():
 
     for key, value_type in expected_result.items():
         assert key in result
-        assert isinstance(result[key], value_type), "Invalid result type"
+        assert isinstance(result[key], value_type), "Invalid result type."
 
     print(f"Got {result}")
 
