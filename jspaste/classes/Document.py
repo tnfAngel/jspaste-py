@@ -25,21 +25,33 @@ class Document:
         self.secret = secret
 
     def set_key(self, key: str):
+        """Set a custom key to the local document."""
+
         return self.refresh(key=key)
 
     def set_data(self, data: str):
+        """Set the data of the local document."""
+
         return self.refresh(data=data)
 
     def set_password(self, password: str):
+        """Set a password to the local document."""
+
         return self.refresh(password=password)
 
     def set_secret(self, secret: str):
+        """Set a custom secret to the local document."""
+
         return self.refresh(secret=secret)
 
     def set_lifetime(self, lifetime: int):
+        """Set a custom lifetime to the local document."""
+
         return self.refresh(lifetime=lifetime)
 
     async def access(self):
+        """Access to the document."""
+
         document = await self.client.access(self.key)
 
         return self.refresh(
@@ -50,6 +62,8 @@ class Document:
         )
 
     async def publish(self, data: Optional[dict] = None):
+        """Publish the document."""
+
         if data:
             self.data = data
 
@@ -80,6 +94,8 @@ class Document:
         )
 
     async def exists(self):
+        """Check if the document exists."""
+
         return await self.client.exists(self.key)
 
     def refresh(
@@ -92,6 +108,8 @@ class Document:
         expiration_timestamp: Optional[int] = None,
         secret: Optional[str] = None,
     ):
+        """Refresh the local document."""
+
         if key:
             self.key = key
         if data:

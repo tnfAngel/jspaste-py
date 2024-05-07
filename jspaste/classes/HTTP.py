@@ -6,6 +6,8 @@ class HTTP:
         self.options = options
 
     async def fetch(self, endpoint: str, options: dict):
+        """Do a HTTP Request and return the response body."""
+
         async with ClientSession() as session:
             self.session = session
 
@@ -38,6 +40,8 @@ class HTTP:
             return await self.parse_response(response)
 
     async def parse_response(self, response: ClientResponse):
+        """Parse the HTTP response."""
+
         content_type = response.headers.get("Content-Type")
 
         if not content_type:
@@ -46,4 +50,4 @@ class HTTP:
         if content_type.startswith("application/json"):
             return await response.json()
 
-        raise ValueError("Unknown response type")
+        raise ValueError("Unknown response type.")

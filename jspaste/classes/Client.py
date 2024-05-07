@@ -6,6 +6,8 @@ from .HTTP import HTTP
 class Client:
     @property
     def default_http_options(self):
+        """The default http options for the client."""
+
         return {
             "headers": {
                 "User-Agent": "JSPaste-Py/0.0.0 (https://github.com/tnfAngel/jspaste-py)"
@@ -16,6 +18,8 @@ class Client:
 
     @property
     def default_jsp_options(self):
+        """The default JSPaste options for the client."""
+
         return {
             "api": "https://jspaste.eu/api",
             "version": APIEndpointVersion.v2.value,
@@ -28,6 +32,8 @@ class Client:
         self.http = HTTP(self.options.get("http"))
 
     async def access(self, key: str, options: Optional[dict] = None) -> dict:
+        """Access to the specified document using the key."""
+
         headers = {}
 
         if options:
@@ -40,6 +46,8 @@ class Client:
         )
 
     async def publish(self, data: Any, options: Optional[dict] = None) -> dict:
+        """Publish a document with the given data and options."""
+
         headers = {}
 
         if options:
@@ -64,6 +72,8 @@ class Client:
         )
 
     async def exists(self, key: str) -> bool:
+        """Check if a document exists using the key. API Version >=v2."""
+
         if self.options["version"] < APIEndpointVersion.v2:
             raise ValueError('"Exists" can only be used with API version 2 or higher.')
 
@@ -75,6 +85,8 @@ class Client:
         )
 
     async def edit(self, key: str, options: dict) -> dict:
+        """Edit a document using the key and the document secret. API Version >=v2."""
+
         if self.options["version"] < APIEndpointVersion.v2:
             raise ValueError('"Edit" can only be used with API version 2 or higher.')
 
@@ -94,6 +106,7 @@ class Client:
         )
 
     async def remove(self, key: str, options: dict) -> dict:
+        """Delete a document using the key and the document secret."""
 
         headers = {}
 

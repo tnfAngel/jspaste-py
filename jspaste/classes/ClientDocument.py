@@ -26,6 +26,8 @@ class ClientDocument(Document):
         self.removed = removed
 
     async def edit(self, data: Optional[str] = None):
+        """Edit the client document."""
+
         result = await self.client.edit(
             self.key, {"secret": self.secret, "new_body": data or self.data}
         )
@@ -33,6 +35,8 @@ class ClientDocument(Document):
         return self.refresh(edited=result.get("edited"), data=data or self.data)
 
     async def remove(self):
+        """Delete the client document."""
+
         result = await self.client.remove(self.key, {"secret": self.secret})
 
         return self.refresh(removed=result.get("removed"))
@@ -49,6 +53,8 @@ class ClientDocument(Document):
         edited: Optional[bool] = None,
         removed: Optional[bool] = None,
     ):
+        """Refresh the local document."""
+
         if key:
             self.key = key
         if data:
